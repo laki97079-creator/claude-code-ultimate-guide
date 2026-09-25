@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- **`sandbox_docker_network` index reference pointed at the wrong section** (`machine-readable/reference.yaml`, mirrored to `mcp-server/content/reference.yaml`): the positional ref `guide/security/sandbox-isolation.md:121` landed on the `Key properties:` bullet list at the end of the Architecture diagram, not on the Network Policies content the key names. Migrated to `guide/security/sandbox-isolation.md#network-policies` (the `### Network Policies` section). Found by the `resync-reference-yaml.py --check` CI gate, which reported 1 LOW-confidence broken reference (735 OK before, 736 OK after, 0 broken). Verified the anchor resolves with `validate-reference-yaml.py --ci` (601/601 anchors, 0 hard failures).
+- **README date badges drifted** (`README.md`): badge and footer still read Jul 29, 2026. Updated to Sep 25, 2026. `./scripts/sync-version.sh --check` is clean (4/4 version files at 3.41.1, no date notices).
+
 ### Documentation
 
 - **Claude Code releases tracking updated to v2.1.221** (`machine-readable/claude-code-releases.yaml`, `guide/core/claude-code-releases.md`, landing `src/data/releases.ts`, `mcp-server/content/`): one release condensed, published 2026-08-03, 10 days after v2.1.220. Two permission-check bypasses closed: zsh executing hidden commands inside `[[ ]]` regex conditionals in the Bash tool, and PowerShell mishandling quoted paths on Windows, both now prompting for approval. Added a `mode: "mask"` option for sandbox credential files on Linux/WSL, so a sandboxed command reads a sentinel value while the sandbox proxy substitutes the real one on egress (macOS still falls back to `deny`), plus a VSCode Focus view that collapses tool activity behind a per-turn summary. Flagged as a behavior change worth noting: background sessions now commit and push automatically to preserve work, open a draft PR only when the task calls for one, and follow the repository's CLAUDE.md git instructions. MCP server content resync pending.

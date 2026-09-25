@@ -481,7 +481,7 @@ deep_dive:
   sandbox_isolation_guide: "guide/security/sandbox-isolation.md"
   sandbox_isolation_decision_tree: "guide/security/sandbox-isolation.md:7"
   sandbox_docker_sandboxes: "guide/security/sandbox-isolation.md#3-docker-sandboxes"
-  sandbox_docker_network: "guide/security/sandbox-isolation.md:121"
+  sandbox_docker_network: "guide/security/sandbox-isolation.md#network-policies"
   sandbox_docker_templates: "guide/security/sandbox-isolation.md#custom-templates"
   sandbox_docker_docs: "https://docs.docker.com/ai/sandboxes/"
   sandbox_docker_claude_config: "https://docs.docker.com/ai/sandboxes/claude-code/"
